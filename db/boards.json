@@ -1,0 +1,42 @@
+{
+  "board1": {
+    "uid": "r25ceQcvwJhu8tKqfOKDGs8S3XI3",
+    "name": "Take Me There",
+    "isPrivate": false
+  },
+  "board2": {
+    "uid": "r25ceQcvwJhu8tKqfOKDGs8S3XI3",
+    "name": "My DIY",
+    "isPrivate": false
+  },
+  "board3": {
+    "uid": "r25ceQcvwJhu8tKqfOKDGs8S3XI3",
+    "name": "Hair Obsession",
+    "isPrivate": false
+  },
+  "board4": {
+    "uid": "r25ceQcvwJhu8tKqfOKDGs8S3XI3",
+    "name": "HIlarious",
+    "isPrivate": false
+  },
+  "board5": {
+    "uid": "r25ceQcvwJhu8tKqfOKDGs8S3XI3",
+    "name": "Animals to Warm the Heart",
+    "isPrivate": false
+  },
+  "board6": {
+    "uid": "r25ceQcvwJhu8tKqfOKDGs8S3XI3",
+    "name": "Party Planning",
+    "isPrivate": true
+  },
+  "board7": {
+    "uid": "c5xArl3befdeV6WrZDujRR8TxAP2",
+    "name": "Travel",
+    "isPrivate": false
+  },
+  "board8": {
+    "uid": "c5xArl3befdeV6WrZDujRR8TxAP2",
+    "name": "Projects",
+    "isPrivate": false
+  }
+}

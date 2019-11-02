@@ -1,0 +1,16 @@
+{
+  "user1": {
+    "name": "Ashley",
+    "location": "Nashville, TN, USA",
+    "joinDate": "November 1, 2019",
+    "profilePic": "https://avatars1.githubusercontent.com/u/47763728?s=400&v=4",
+    "uid": "r25ceQcvwJhu8tKqfOKDGs8S3XI3"
+  },
+  "user2": {
+    "name": "Priya",
+    "location": "Brisbane, QLD, AUS",
+    "joinDate": "November 2, 2019",
+    "profilePic": "https://pbs.twimg.com/profile_images/1176197551453687808/CTlnrRea_400x400.jpg",
+    "uid": "c5xArl3befdeV6WrZDujRR8TxAP2"
+  }
+}
