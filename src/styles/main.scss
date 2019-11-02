@@ -7,42 +7,4 @@ body{
   .hide{
     display: none!important;
   }
-
-  nav{
-    &.navbar{
-      background-color: rgba(217, 223, 223, 0.37)!important;
-      box-shadow: 0 5px 8px 0 rgba(54, 62, 85, 0.336);
-
-      h1{
-        color: whitesmoke;
-        font-family: 'Lobster', 'Pacifico', cursive;
-
-        &:hover{
-          color: rgba(54, 62, 85, 0.767);
-          text-decoration: none;
-        }
-        
-        &.brand{
-          font-size: 3em;
-        }
-
-        &#boardNav{
-          margin: .25em .75em .25em 0;
-        }
-      }
-
-      #logoutBtn{
-        margin: 16px;
-
-        &:hover{
-          background-color: rgba(54, 62, 85, 0.767);
-          color: whitesmoke;
-        }
-      }
-
-      .logo{
-        max-height: 80px;
-      }
-    }
-  }
 }
