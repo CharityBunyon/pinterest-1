@@ -5,7 +5,7 @@ body{
   font-family: 'Big Shoulders Display', 'PT Sans Narrow', sans-serif;
 
   .hide{
-    display: none;
+    display: none!important;
   }
 
   nav{
@@ -19,6 +19,7 @@ body{
 
         &:hover{
           color: rgba(54, 62, 85, 0.767);
+          text-decoration: none;
         }
         
         &.brand{
