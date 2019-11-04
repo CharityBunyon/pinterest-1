@@ -15,6 +15,8 @@ const logoutEvent = () => {
     e.preventDefault();
     firebase.auth().signOut()
       .then(() => {
+        boardDiv.html('');
+        $('#profile').html('');
         boardDiv.addClass('hide');
         boardsBtn.addClass('hide');
         logoutBtn.addClass('hide');
