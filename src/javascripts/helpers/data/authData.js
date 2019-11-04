@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import boards from '../../components/boards/boards';
+import currentUser from '../../components/userInfo/userInfo';
 
 const authDiv = $('#auth');
 const loginBtn = $('#loginBtn');
@@ -18,6 +20,8 @@ const checkLoginStatus = () => {
       navToggle.removeClass('hide');
       loginBtn.addClass('hide');
       authDiv.addClass('hide');
+      currentUser.printProfileInfo();
+      boards.printActiveUserBoards();
     } else {
       boardDiv.addClass('hide');
       boardsBtn.addClass('hide');
