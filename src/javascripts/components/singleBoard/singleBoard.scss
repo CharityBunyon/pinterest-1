@@ -1,0 +1,9 @@
+#singleBoard{
+  img{
+    padding: 0;
+
+    &:hover{
+      border: 3px solid rgba(54, 62, 85, 0.767);
+    }
+  }
+}
