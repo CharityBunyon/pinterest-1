@@ -22,7 +22,12 @@ const printActiveUserBoards = () => {
       boardString += '</div>';
       utilities.printToDom('boards', boardString);
       $('#boards').on('click', '.boardCards', (e) => {
-        singleBoard.printBoardPins(e);
+        smash.createBoardPins(e)
+          .then((response) => {
+            $('#boards').addClass('hide');
+            $('#singleBoard').removeClass('hide');
+            singleBoard.printBoardPins(response);
+          }).catch((err) => console.error(err));
       });
     }).catch((err) => console.error(err));
 };
