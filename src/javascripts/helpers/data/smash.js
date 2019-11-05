@@ -1,6 +1,9 @@
+import $ from 'jquery';
 import boardData from './boardsData';
 import userPins from './userPinData';
 import pins from './pinsData';
+import singleBoard from './singleBoardData';
+
 
 const getBoardAndImg = () => new Promise((resolve, reject) => {
   boardData.getAllBoards()
@@ -21,4 +24,28 @@ const getBoardAndImg = () => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export default { getBoardAndImg };
+const createBoardPins = (e) => new Promise((resolve, reject) => {
+  const brdId = $(e.target).closest('.card').attr('id');
+  singleBoard.getBoardPins(brdId)
+    .then((boardPins) => {
+      pins.getAllPins().then((allPins) => {
+        boardData.getAllBoards().then((brds) => {
+          const allBoardPins = [];
+          boardPins.forEach((pin) => {
+            const newAllBoardPins = { ...pin };
+            const brdName = brds.find((y) => y.id === pin.boardId);
+            const matchPins = allPins.find((x) => x.id === pin.pinId);
+            newAllBoardPins.boardName = brdName.name;
+            newAllBoardPins.imgUrl = matchPins.imgUrl;
+            newAllBoardPins.siteUrl = matchPins.siteUrl;
+            newAllBoardPins.title = matchPins.title;
+            newAllBoardPins.description = matchPins.description;
+            allBoardPins.push(newAllBoardPins);
+          });
+          resolve(allBoardPins);
+        });
+      });
+    }).catch((err) => reject(err));
+});
+
+export default { getBoardAndImg, createBoardPins };
