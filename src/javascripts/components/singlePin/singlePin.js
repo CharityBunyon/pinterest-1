@@ -1,7 +1,9 @@
 import './singlePin.scss';
 
-const printPin = (pin) => {
-  console.log(pin);
+
+const printPin = (e, allBrdPins) => {
+  const pin = e.target.id;
+  console.log(pin, allBrdPins);
 };
 
 export default { printPin };
