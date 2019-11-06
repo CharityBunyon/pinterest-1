@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import boards from '../../components/boards/boards';
 import currentUser from '../../components/userInfo/userInfo';
+import boardBtn from '../../components/singleBoard/boardsBtn';
 
 const authDiv = $('#auth');
 const loginBtn = $('#loginBtn');
@@ -22,6 +23,7 @@ const checkLoginStatus = () => {
       authDiv.addClass('hide');
       currentUser.printProfileInfo();
       boards.printActiveUserBoards();
+      boardsBtn.click(boardBtn.showUserBoards);
     } else {
       boardDiv.addClass('hide');
       boardsBtn.addClass('hide');

@@ -16,8 +16,14 @@ Squidterest is a Pinterest-inspired application that allows users to save images
 Display on page load:
 ![on load](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest-logged-out.png)
 
-Logged in display:
+Logged in display (User's Boards):
 ![logged in](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest-logged-in.png)
+
+Individual Board View:
+![single board](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest-single-board.png)
+
+Individual Pin View:
+![single pin](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest-pin-modal.png)
 
 
 ## Instructions for how to run the project
