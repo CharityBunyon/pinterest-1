@@ -9,6 +9,7 @@ const boardsBtn = $('#boardNav');
 const logoutBtn = $('#logoutBtn');
 const navToggle = $('#navToggle');
 const boardDiv = $('#boards');
+const singleBoard = $('#singleBoard');
 
 const logoutEvent = () => {
   logoutBtn.click((e) => {
@@ -21,6 +22,7 @@ const logoutEvent = () => {
         boardsBtn.addClass('hide');
         logoutBtn.addClass('hide');
         navToggle.addClass('hide');
+        singleBoard.addClass('hide');
         loginBtn.removeClass('hide');
         authDiv.removeClass('hide');
       }).catch((err) => console.error('you are still logged in', err));
