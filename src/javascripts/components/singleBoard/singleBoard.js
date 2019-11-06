@@ -10,12 +10,16 @@ const printBoardPins = (pinArr) => {
   `;
   pinArr.forEach((pin) => {
     pinString += `
-      <img id=${pin.id} class='card pinImg col-sm-3 m-sm-2 align-self-center' src=${pin.imgUrl} />
+      <img id=${pin.id} class='card pinImg col-sm-3 m-sm-2 align-self-center' data-toggle="modal" data-target="#pinModal" src=${pin.imgUrl} />
     `;
   });
   pinString += '</div>';
   utilities.printToDom('singleBoard', pinString);
-  const newPinArr = { ...pinArr };
+  const newPinArr = [];
+  pinArr.forEach((obj) => {
+    const pinObj = { ...obj };
+    newPinArr.push(pinObj);
+  });
   $('#singleBoard').on('click', '.pinImg', (e) => {
     singlePin.printPin(e, newPinArr);
   });
