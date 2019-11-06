@@ -17,7 +17,7 @@ Display on page load:
 ![on load](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest-logged-out.png)
 
 Logged in display (User's Boards):
-![logged in](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest-logged-in.png)
+![logged in](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest-logged-in-view.png)
 
 Individual Board View:
 ![single board](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest-single-board.png)
