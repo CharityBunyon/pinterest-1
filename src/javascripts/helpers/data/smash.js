@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import boardData from './boardsData';
 import userPins from './userPinData';
 import pins from './pinsData';
@@ -24,8 +23,7 @@ const getBoardAndImg = () => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-const createBoardPins = (e) => new Promise((resolve, reject) => {
-  const brdId = $(e.target).closest('.card').attr('id');
+const createBoardPins = (brdId) => new Promise((resolve, reject) => {
   singleBoard.getBoardPins(brdId)
     .then((boardPins) => {
       pins.getAllPins().then((allPins) => {
