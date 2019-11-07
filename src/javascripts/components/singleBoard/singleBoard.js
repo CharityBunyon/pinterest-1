@@ -1,7 +1,5 @@
 import './singleBoard.scss';
-import $ from 'jquery';
 import utilities from '../../helpers/utilities';
-import singlePin from '../singlePin/singlePin';
 
 const printBoardPins = (pinArr) => {
   let pinString = `
@@ -10,20 +8,11 @@ const printBoardPins = (pinArr) => {
   `;
   pinArr.forEach((pin) => {
     pinString += `
-      <img id=${pin.id} class='card pinImg col-sm-3 m-sm-2 align-self-center' data-toggle="modal" data-target="#pinModal" src=${pin.imgUrl} />
+      <img id='${pin.id}-pin-${pin.boardId}' class='card pinImg col-sm-3 m-sm-2 align-self-center' data-toggle="modal" data-target="#pinModal" src=${pin.imgUrl} />
     `;
   });
   pinString += '</div>';
   utilities.printToDom('singleBoard', pinString);
-  const newPinArr = [];
-  pinArr.forEach((obj) => {
-    const pinObj = { ...obj };
-    newPinArr.push(pinObj);
-  });
-  console.log(newPinArr);
-  $('#singleBoard').on('click', '.pinImg', (e) => {
-    singlePin.printPin(e, newPinArr);
-  });
 };
 
 export default { printBoardPins };
