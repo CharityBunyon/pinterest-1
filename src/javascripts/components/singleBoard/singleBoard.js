@@ -20,6 +20,7 @@ const printBoardPins = (pinArr) => {
     const pinObj = { ...obj };
     newPinArr.push(pinObj);
   });
+  console.log(newPinArr);
   $('#singleBoard').on('click', '.pinImg', (e) => {
     singlePin.printPin(e, newPinArr);
   });

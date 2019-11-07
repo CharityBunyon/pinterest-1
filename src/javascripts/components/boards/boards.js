@@ -4,6 +4,15 @@ import smash from '../../helpers/data/smash';
 import utilities from '../../helpers/utilities';
 import singleBoard from '../singleBoard/singleBoard';
 
+const printBrdPinEvent = (e) => {
+  smash.createBoardPins(e)
+    .then((response) => {
+      $('#boards').addClass('hide');
+      $('#singleBoard').removeClass('hide');
+      singleBoard.printBoardPins(response);
+    }).catch((err) => console.error(err));
+};
+
 const printActiveUserBoards = () => {
   smash.getBoardAndImg()
     .then((boards) => {
@@ -21,15 +30,8 @@ const printActiveUserBoards = () => {
       });
       boardString += '</div>';
       utilities.printToDom('boards', boardString);
-      $('#boards').on('click', '.boardCards', (e) => {
-        smash.createBoardPins(e)
-          .then((response) => {
-            $('#boards').addClass('hide');
-            $('#singleBoard').removeClass('hide');
-            singleBoard.printBoardPins(response);
-          }).catch((err) => console.error(err));
-      });
+      $('#boards').on('click', '.boardCards', (e) => printBrdPinEvent(e));
     }).catch((err) => console.error(err));
 };
 
-export default { printActiveUserBoards };
+export default { printActiveUserBoards, printBrdPinEvent };
