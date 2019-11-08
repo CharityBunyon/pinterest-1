@@ -1,19 +1,8 @@
 import './boards.scss';
-import $ from 'jquery';
+// import $ from 'jquery';
 import smash from '../../helpers/data/smash';
 import utilities from '../../helpers/utilities';
-import singleBoard from '../singleBoard/singleBoard';
-
-const printBrdPinEvent = (e) => {
-  const bdId = $(e.target).closest('.pinTarget').attr('id').split('-')[1];
-  console.log('brd click', bdId);
-  smash.createBoardPins(bdId)
-    .then((response) => {
-      $('#boards').addClass('hide');
-      $('#singleBoard').removeClass('hide');
-      singleBoard.printBoardPins(response);
-    }).catch((err) => console.error(err));
-};
+// import singleBoard from '../singleBoard/singleBoard';
 
 const printActiveUserBoards = () => {
   smash.getBoardAndImg()
@@ -32,8 +21,7 @@ const printActiveUserBoards = () => {
       });
       boardString += '</div>';
       utilities.printToDom('boards', boardString);
-      $('#boards').on('click', '.boardCards', (e) => printBrdPinEvent(e));
     }).catch((err) => console.error(err));
 };
 
-export default { printActiveUserBoards, printBrdPinEvent };
+export default { printActiveUserBoards };

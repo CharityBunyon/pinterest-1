@@ -2,7 +2,7 @@ import './singlePin.scss';
 import $ from 'jquery';
 import utilities from '../../helpers/utilities';
 import delIcon from '../../../assets/images/trash-icon.png';
-import boards from '../boards/boards';
+import boardClick from '../boards/boardClick';
 import userPinData from '../../helpers/data/userPinData';
 
 const deletePin = (e) => {
@@ -10,9 +10,8 @@ const deletePin = (e) => {
   const toDelete = e.target.id.split('-')[0];
   userPinData.deleteUserPin(toDelete)
     .then(() => {
-      console.log('del split', e.target.id, e.target.id.split('-')[1]);
       $('#pinModal').modal('hide');
-      boards.printBrdPinEvent(e);
+      boardClick.printBrdPinEvent(e);
     })
     .catch((err) => console.error(err));
 };
