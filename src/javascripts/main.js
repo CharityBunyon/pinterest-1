@@ -8,12 +8,14 @@ import authData from './helpers/data/authData';
 import myNav from './components/myNav/myNav';
 import smash from './helpers/data/smash';
 import singlePin from './components/singlePin/singlePin';
+import brdClick from './components/boards/boardClick';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseConfig);
   auth.printLoginBtn();
   authData.checkLoginStatus();
   myNav.logoutEvent();
+  $('#boards').on('click', '.boardCards', (e) => brdClick.printBrdPinEvent(e));
   $(document).on('click', '.pinImg', (e) => {
     const brdId = e.target.id.split('-pin-')[1];
     smash.createBoardPins(brdId).then((response) => {
