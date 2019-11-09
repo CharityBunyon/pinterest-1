@@ -22,17 +22,20 @@ const discardBoard = (e) => {
 const printBoardPins = (pinArr) => {
   let pinString = `
     <div class='row d-flex mb-3'>
-      <h2 class='col-11'>${pinArr[0].boardName}</h2>
-      <img id='delBrd-${pinArr[0].boardId}' alt='delete' title='Delete ${pinArr[0].boardName}' class='col-1 brdTarget del-brd' src='${delIcon}' />
+      <h2 class='col-11'>${pinArr[0].boardName ? pinArr[0].boardName : pinArr[0].name}</h2>
+      <img id='delBrd-${pinArr[0].boardId ? pinArr[0].boardId : pinArr[0].id}' alt='delete' title='Delete ${pinArr[0].boardName ? pinArr[0].boardName : pinArr[0].name}' 
+      class='col-1 brdTarget del-brd' src='${delIcon}' />
     </div>
-    <div class='row d-flex flex-wrap justify-content-around text-center'>
   `;
-  pinArr.forEach((pin) => {
-    pinString += `
-      <img id='${pin.id}-pin-${pin.boardId}' class='card pinImg col-sm-3 m-sm-2 align-self-center' data-toggle="modal" data-target="#pinModal" src=${pin.imgUrl} />
-    `;
-  });
-  pinString += '</div>';
+  if (pinArr[0].imgUrl) {
+    pinString += '<div class="row d-flex flex-wrap justify-content-around text-center">';
+    pinArr.forEach((pin) => {
+      pinString += `<img id='${pin.id}-pin-${pin.boardId}' class='card pinImg col-sm-3 m-sm-2 align-self-center' data-toggle="modal" data-target="#pinModal" src=${pin.imgUrl} />`;
+    });
+    pinString += '</div>';
+  } else {
+    pinString += '<p>This Board is Empty 🥺 Pin Something!</p>';
+  }
   utilities.printToDom('singleBoard', pinString);
   $('#singleBoard').on('click', '.del-brd', discardBoard);
 };

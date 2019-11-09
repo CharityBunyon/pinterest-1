@@ -13,8 +13,10 @@ const getBoardAndImg = () => new Promise((resolve, reject) => {
           boards.forEach((brd) => {
             const newBrds = { ...brd };
             const matchPins = userPin.find((x) => x.boardId === newBrds.id);
-            const coverImg = pin.find((y) => y.id === matchPins.pinId);
-            newBrds.imgUrl = coverImg.imgUrl;
+            if (matchPins) {
+              const coverImg = pin.find((y) => y.id === matchPins.pinId);
+              newBrds.imgUrl = coverImg.imgUrl;
+            }
             activeBoards.push(newBrds);
           });
           resolve(activeBoards);
@@ -26,23 +28,38 @@ const getBoardAndImg = () => new Promise((resolve, reject) => {
 const createBoardPins = (brdId) => new Promise((resolve, reject) => {
   singleBoard.getBoardPins(brdId)
     .then((boardPins) => {
-      pins.getAllPins().then((allPins) => {
+      if (boardPins[0]) {
+        pins.getAllPins().then((allPins) => {
+          boardData.getAllBoards().then((brds) => {
+            const allBoardPins = [];
+            boardPins.forEach((pin) => {
+              const newAllBoardPins = { ...pin };
+              const brdName = brds.find((y) => y.id === pin.boardId);
+              const matchPins = allPins.find((x) => x.id === pin.pinId);
+              newAllBoardPins.boardName = brdName.name;
+              newAllBoardPins.imgUrl = matchPins.imgUrl;
+              newAllBoardPins.siteUrl = matchPins.siteUrl;
+              newAllBoardPins.title = matchPins.title;
+              newAllBoardPins.description = matchPins.description;
+              allBoardPins.push(newAllBoardPins);
+            });
+            console.log(allBoardPins);
+            resolve(allBoardPins);
+          });
+        });
+      } else {
         boardData.getAllBoards().then((brds) => {
           const allBoardPins = [];
-          boardPins.forEach((pin) => {
-            const newAllBoardPins = { ...pin };
-            const brdName = brds.find((y) => y.id === pin.boardId);
-            const matchPins = allPins.find((x) => x.id === pin.pinId);
-            newAllBoardPins.boardName = brdName.name;
-            newAllBoardPins.imgUrl = matchPins.imgUrl;
-            newAllBoardPins.siteUrl = matchPins.siteUrl;
-            newAllBoardPins.title = matchPins.title;
-            newAllBoardPins.description = matchPins.description;
-            allBoardPins.push(newAllBoardPins);
+          brds.forEach((board) => {
+            if (board.id === brdId) {
+              const newAllBoardPins = { ...board };
+              allBoardPins.push(newAllBoardPins);
+            }
           });
+          console.log(allBoardPins);
           resolve(allBoardPins);
         });
-      });
+      }
     }).catch((err) => reject(err));
 });
 
