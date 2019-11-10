@@ -3,7 +3,7 @@ import singleBoard from '../singleBoard/singleBoard';
 import smash from '../../helpers/data/smash';
 
 const printBrdPinEvent = (e) => {
-  const bdId = $(e.target).closest('.pinTarget').attr('id').split('_')[1];
+  const bdId = $(e.target).closest('.pinTarget').attr('id').split('_splt_')[1];
   console.log('brd click', bdId);
   smash.createBoardPins(bdId)
     .then((response) => {

@@ -10,6 +10,7 @@ import pins from '../../helpers/data/pinsData';
 import smash from '../../helpers/data/smash';
 import singleBoard from '../singleBoard/singleBoard';
 
+
 const createPin = (e) => {
   e.stopImmediatePropagation();
   const { uid } = firebase.auth().currentUser;
@@ -39,6 +40,7 @@ const createPin = (e) => {
         $('#addNew').addClass('hide');
         $('#singleBoard').removeClass('hide');
         singleBoard.printBoardPins(response);
+        $('#addPinForm').trigger('reset');
       });
     });
   }).catch((err) => console.error(err));
@@ -46,7 +48,7 @@ const createPin = (e) => {
 
 const deletePin = (e) => {
   e.stopImmediatePropagation();
-  const toDelete = e.target.id.split('_')[0];
+  const toDelete = e.target.id.split('_splt_')[0];
   userPinData.deleteUserPin(toDelete)
     .then(() => {
       $('#pinModal').modal('hide');
@@ -63,7 +65,7 @@ const printPin = (e, allBrdPins) => {
       const pinString = `
         <div class="modal-header">
           <h3 class="modal-title col-10" id="pinModalLabel">${item.title}</h3>
-          <img id='${item.id}_${item.boardId}' class='col-1 pinTarget del-pin' src='${delIcon}' />
+          <img id='${item.id}_splt_${item.boardId}' class='col-1 pinTarget del-pin' src='${delIcon}' />
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -83,7 +85,7 @@ const printPin = (e, allBrdPins) => {
         </div>
       `;
       utilities.printToDom('dynamicModalDiv', pinString);
-      $(`#${item.id}_${item.boardId}`).click(deletePin);
+      $(`#${item.id}_splt_${item.boardId}`).click(deletePin);
     }
   });
 };

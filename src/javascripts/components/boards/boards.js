@@ -13,7 +13,7 @@ const printActiveUserBoards = () => {
       `;
       boards.forEach((board) => {
         boardString += `
-        <div id='brd_${board.id}' class='card pinTarget boardCards col-sm-3 m-2'>
+        <div id='brd_splt_${board.id}' class='card pinTarget boardCards col-sm-3 m-2'>
         <h3 class='text-center'>${board.name}</h3>
         <img class='card-img boardCover' src=${board.imgUrl ? board.imgUrl : noImg} />
         </div>
