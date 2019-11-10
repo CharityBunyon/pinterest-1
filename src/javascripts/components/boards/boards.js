@@ -1,8 +1,11 @@
 import './boards.scss';
+import $ from 'jquery';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import smash from '../../helpers/data/smash';
 import utilities from '../../helpers/utilities';
 import noImg from '../../../assets/images/no-img.png';
-
+import boardData from '../../helpers/data/boardsData';
 
 const printActiveUserBoards = () => {
   smash.getBoardAndImg()
@@ -24,4 +27,21 @@ const printActiveUserBoards = () => {
     }).catch((err) => console.error(err));
 };
 
-export default { printActiveUserBoards };
+const createBoard = (e) => {
+  e.stopImmediatePropagation();
+  console.log('clicked save board');
+  const { uid } = firebase.auth().currentUser;
+  const newBoard = {
+    uid,
+    name: $('#board-title').val(),
+    isPrivate: $('#isPrivateCheck').is(':checked'),
+  };
+  boardData.addNewBoard(newBoard).then(() => {
+    console.log('added board');
+    $('#newBoardModal').modal('hide');
+    printActiveUserBoards();
+    $('#addBoardForm').trigger('reset');
+  }).catch((err) => console.error(err));
+};
+
+export default { printActiveUserBoards, createBoard };
