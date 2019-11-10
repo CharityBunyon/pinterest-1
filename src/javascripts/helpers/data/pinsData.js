@@ -3,6 +3,15 @@ import apiKey from '../apiKeys.json';
 
 const baseUrl = apiKey.firebaseConfig.databaseURL;
 
+const addNewPin = (newPin) => new Promise((resolve, reject) => {
+  axios.post(`${baseUrl}/pins.json`, newPin)
+    .then((response) => {
+      const newPinId = response.data;
+      console.log('new pin id', newPinId.name);
+      resolve(newPinId.name);
+    }).catch((err) => reject(err));
+});
+
 const getAllPins = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/pins.json`)
     .then((response) => {
@@ -16,4 +25,4 @@ const getAllPins = () => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export default { getAllPins };
+export default { getAllPins, addNewPin };

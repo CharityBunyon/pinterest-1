@@ -22,7 +22,8 @@ const discardBoard = (e) => {
 const printBoardPins = (pinArr) => {
   let pinString = `
     <div class='row d-flex mb-3'>
-      <h2 class='col-11'>${pinArr[0].boardName ? pinArr[0].boardName : pinArr[0].name}</h2>
+      <h2 class='col-10'>${pinArr[0].boardName ? pinArr[0].boardName : pinArr[0].name}</h2>
+      <p class='p-0 text-center col-1 createPin' id='addPin' data-toggle='modal' data-target='#newPinModal'>+</p>
       <img id='delBrd-${pinArr[0].boardId ? pinArr[0].boardId : pinArr[0].id}' alt='delete' title='Delete ${pinArr[0].boardName ? pinArr[0].boardName : pinArr[0].name}' 
       class='col-1 brdTarget del-brd' src='${delIcon}' />
     </div>

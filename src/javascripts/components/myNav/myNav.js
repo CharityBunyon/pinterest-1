@@ -10,6 +10,7 @@ const logoutBtn = $('#logoutBtn');
 const navToggle = $('#navToggle');
 const boardDiv = $('#boards');
 const singleBoard = $('#singleBoard');
+const addNew = $('#addNew');
 
 const logoutEvent = () => {
   logoutBtn.click((e) => {
@@ -22,6 +23,7 @@ const logoutEvent = () => {
         boardsBtn.addClass('hide');
         logoutBtn.addClass('hide');
         navToggle.addClass('hide');
+        addNew.addClass('hide');
         singleBoard.addClass('hide');
         loginBtn.removeClass('hide');
         authDiv.removeClass('hide');

@@ -11,6 +11,7 @@ const boardsBtn = $('#boardNav');
 const logoutBtn = $('#logoutBtn');
 const navToggle = $('#navToggle');
 const boardDiv = $('#boards');
+const addNew = $('#addNew');
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -19,6 +20,7 @@ const checkLoginStatus = () => {
       boardsBtn.removeClass('hide');
       logoutBtn.removeClass('hide');
       navToggle.removeClass('hide');
+      addNew.removeClass('hide');
       loginBtn.addClass('hide');
       authDiv.addClass('hide');
       currentUser.printProfileInfo();
@@ -29,6 +31,7 @@ const checkLoginStatus = () => {
       boardsBtn.addClass('hide');
       logoutBtn.addClass('hide');
       navToggle.addClass('hide');
+      addNew.addClass('hide');
       loginBtn.removeClass('hide');
       authDiv.removeClass('hide');
     }

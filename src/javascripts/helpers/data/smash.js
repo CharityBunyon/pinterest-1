@@ -41,6 +41,7 @@ const createBoardPins = (brdId) => new Promise((resolve, reject) => {
               newAllBoardPins.siteUrl = matchPins.siteUrl;
               newAllBoardPins.title = matchPins.title;
               newAllBoardPins.description = matchPins.description;
+              newAllBoardPins.category = matchPins.category;
               allBoardPins.push(newAllBoardPins);
             });
             console.log(allBoardPins);
