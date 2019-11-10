@@ -22,8 +22,7 @@ const createPin = (e) => {
     category: $('#categoryDropdown').val(),
   };
   const board = $('#boardDropdown').val();
-  const tried = $('#hasTriedCheck').val() === 'true';
-  console.log(newPin, tried);
+  console.log(newPin, $('#hasTriedCheck').is(':checked'));
   pins.addNewPin(newPin).then((newPinId) => {
     console.log(newPinId);
     const newUserPin = {
@@ -31,7 +30,7 @@ const createPin = (e) => {
       pinId: newPinId,
       comment: $('#pin-comment').val(),
       boardId: board,
-      hasTried: tried,
+      hasTried: $('#hasTriedCheck').is(':checked'),
     };
     userPinData.addNewUserPin(newUserPin).then(() => {
       $('#newPinModal').modal('hide');

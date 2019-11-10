@@ -10,6 +10,7 @@ import smash from './helpers/data/smash';
 import singlePin from './components/singlePin/singlePin';
 import brdClick from './components/boards/boardClick';
 import addPin from './components/newPinForm/newPinForm';
+import boards from './components/boards/boards';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseConfig);
@@ -17,6 +18,7 @@ const init = () => {
   authData.checkLoginStatus();
   myNav.logoutEvent();
   $('#boards').on('click', '.boardCards', (e) => brdClick.printBrdPinEvent(e));
+  $('#saveNewBoard').click(boards.createBoard);
   $(document).on('click', '.createPin', addPin.printNewPinModal);
   $(document).on('click', '.pinImg', (e) => {
     const brdId = e.target.id.split('-pin-')[1];
