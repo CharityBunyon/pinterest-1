@@ -1,6 +1,6 @@
 import smash from '../../helpers/data/smash';
-import pinsData from '../../helpers/data/pinsData';
-import userPinsData from '../../helpers/data/userPinData';
+// import pinsData from '../../helpers/data/pinsData';
+// import userPinsData from '../../helpers/data/userPinData';
 
 // give edit button id with board and userpinid
 // add update button to pin modal & set to hide
@@ -15,35 +15,37 @@ import userPinsData from '../../helpers/data/userPinData';
 // run changeUserPin passing in userpin obj & id !!!
 // resolve
 
-const editPinSubmit = (pinObj) => {
-  const updatedPin = {
-    title: $('#pin-title').val(),
-    description: $('#pin-description').val(),
-    imgUrl: $('#pin-imgUrl').val(),
-    siteUrl: $('#pin-siteUrl').val(),
-    category: $('#categoryDropdown').val(),
-  };
-  const updatedUserPin = {
-    uid: pinObj.uid,
-    pinId: pinObj.pinId,
-    comment: $('#pin-comment').val(),
-    boardId: $('#boardDropdown').val(),
-    hasTried: $('#hasTriedCheck').is(':checked'),
-  };
-  pinsData.changePin(pinObj.pinId, updatedPin);
-  userPinsData.changeUserPin(pinObj.id, updatedUserPin);
-  // toggle update/save btns
-};
+// const editPinSubmit = (pinObj) => {
+//   const updatedPin = {
+//     title: $('#pin-title').val(),
+//     description: $('#pin-description').val(),
+//     imgUrl: $('#pin-imgUrl').val(),
+//     siteUrl: $('#pin-siteUrl').val(),
+//     category: $('#categoryDropdown').val(),
+//   };
+//   const updatedUserPin = {
+//     uid: pinObj.uid,
+//     pinId: pinObj.pinId,
+//     comment: $('#pin-comment').val(),
+//     boardId: $('#boardDropdown').val(),
+//     hasTried: $('#hasTriedCheck').is(':checked'),
+//   };
+//   pinsData.changePin(pinObj.pinId, updatedPin);
+//   userPinsData.changeUserPin(pinObj.id, updatedUserPin);
+//   // toggle update/save btns
+// };
 
 const editPinModal = (boardId, userPinId) => new Promise((resolve, reject) => {
+  console.log('brdId', boardId);
   smash.createBoardPins(boardId).then((response) => {
-    const brdPins = response.data;
+    const brdPins = response;
+    console.log('brdpins', brdPins);
     const pinToEdit = brdPins.find((x) => x.id === userPinId);
-    console.log(pinToEdit);
+    console.log('pin to edit', pinToEdit);
     // launch modal with fields populated from obj
     // hide save button show update button
     // event listener pass pinToEdit
-    $('#updateBtn').click(editPinSubmit(pinToEdit));
+    // $('#updateBtn').click(editPinSubmit(pinToEdit));
     resolve();
   }).catch((err) => reject(err));
 });

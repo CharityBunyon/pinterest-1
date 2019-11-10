@@ -14,10 +14,11 @@ import editPins from '../editPins/editPins';
 
 const updatePin = (e) => {
   e.stopImmediatePropagation();
-  const boardId = e.target.id.split('-edit-')[0];
-  const userPinId = e.target.id.split('-edit-')[1];
-  editPins.editPin(boardId, userPinId)
+  const boardId = e.target.id.split('_edit_')[1];
+  const userPinId = e.target.id.split('_edit_')[0];
+  editPins.editPinModal(boardId, userPinId)
     .then(() => {
+      console.log('editpins complete');
       // smash then singlebrd
     }).catch((err) => console.error(err));
 };
@@ -98,7 +99,7 @@ const printPin = (e, allBrdPins) => {
       `;
       utilities.printToDom('dynamicModalDiv', pinString);
       $(`#${item.id}_splt_${item.boardId}`).click(deletePin);
-      $('#').click(updatePin);
+      $(`#${item.id}_edit_${item.boardId}`).click(updatePin);
     }
   });
 };
