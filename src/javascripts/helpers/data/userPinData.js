@@ -6,6 +6,8 @@ import apiKey from '../apiKeys.json';
 const baseUrl = apiKey.firebaseConfig.databaseURL;
 const getCurrentUid = () => firebase.auth().currentUser.uid;
 
+const addNewUserPin = (newUserPin) => axios.post(`${baseUrl}/userPins.json`, newUserPin);
+
 const deleteUserPin = (userPinId) => axios.delete(`${baseUrl}/userPins/${userPinId}.json`);
 
 const getAllUserPins = () => new Promise((resolve, reject) => {
@@ -22,4 +24,4 @@ const getAllUserPins = () => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export default { getAllUserPins, deleteUserPin };
+export default { getAllUserPins, deleteUserPin, addNewUserPin };

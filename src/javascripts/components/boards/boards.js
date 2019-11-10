@@ -1,8 +1,8 @@
 import './boards.scss';
-// import $ from 'jquery';
 import smash from '../../helpers/data/smash';
 import utilities from '../../helpers/utilities';
-// import singleBoard from '../singleBoard/singleBoard';
+import noImg from '../../../assets/images/no-img.png';
+
 
 const printActiveUserBoards = () => {
   smash.getBoardAndImg()
@@ -13,9 +13,9 @@ const printActiveUserBoards = () => {
       `;
       boards.forEach((board) => {
         boardString += `
-        <div id='brd-${board.id}' class='card pinTarget boardCards col-sm-3 m-2'>
+        <div id='brd_splt_${board.id}' class='card pinTarget boardCards col-sm-3 m-2'>
         <h3 class='text-center'>${board.name}</h3>
-        <img class='card-img boardCover' src=${board.imgUrl} />
+        <img class='card-img boardCover' src=${board.imgUrl ? board.imgUrl : noImg} />
         </div>
         `;
       });

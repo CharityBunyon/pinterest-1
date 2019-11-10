@@ -8,7 +8,25 @@
   }
 
   .del-brd{
+    margin: 4px;
     max-height: 2em;
     max-width: 2em;
+  }
+
+  #addPin{
+    background-color: whitesmoke;
+    border-radius: 999px;
+    color: rgba(54, 62, 85, 0.767);
+    font-size: 2.25rem;
+    margin: 4px;
+    max-height: 1em;
+    max-width: 1em;
+    line-height: 1.1;
+
+    &:hover{
+      background-color: rgba(54, 62, 85, 0.767);
+      border: 1px solid whitesmoke;
+      color: whitesmoke;
+    }
   }
 }
