@@ -1,10 +1,10 @@
-import $ from 'jquery';
-import utilities from '../../helpers/utilities';
-import singlePin from '../singlePin/singlePin';
+// import $ from 'jquery';
+// import utilities from '../../helpers/utilities';
+// import singlePin from '../singlePin/singlePin';
 import pinsData from '../../helpers/data/pinsData';
 import boardData from '../../helpers/data/boardsData';
 
-const printNewPinModal = () => {
+const printNewPinModal = () => new Promise((resolve, reject) => {
   pinsData.getAllPins().then((allPinsArr) => {
     let modalOptionsString = `
       <div class="form-group">
@@ -19,10 +19,10 @@ const printNewPinModal = () => {
     const categoryList = newPinsArr.filter((item, index) => newPinsArr.indexOf(item) === index);
     categoryList.forEach((category) => {
       modalOptionsString += ` 
-        <option>${category}</option>`;
+        <option value='${category}'>${category}</option>`;
     });
     boardData.getAllBoards().then((allBoardssArr) => {
-      console.log(allBoardssArr[0].boardId);
+      console.log('brdId in form', allBoardssArr[0].boardId);
       modalOptionsString += `
           </select>
         </div>
@@ -36,10 +36,9 @@ const printNewPinModal = () => {
         `;
       });
       modalOptionsString += '</select></div>';
-      utilities.printToDom('dynamicAddPinModalDiv', modalOptionsString);
-      $('#saveNewPin').click(singlePin.createPin);
+      resolve(modalOptionsString);
     });
-  }).catch((err) => console.error(err));
-};
+  }).catch((err) => reject(err));
+});
 
 export default { printNewPinModal };

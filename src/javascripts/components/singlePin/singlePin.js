@@ -10,19 +10,7 @@ import userPinData from '../../helpers/data/userPinData';
 import pins from '../../helpers/data/pinsData';
 import smash from '../../helpers/data/smash';
 import singleBoard from '../singleBoard/singleBoard';
-import editPins from '../editPins/editPins';
-
-const updatePin = (e) => {
-  e.stopImmediatePropagation();
-  const boardId = e.target.id.split('_edit_')[1];
-  const userPinId = e.target.id.split('_edit_')[0];
-  editPins.editPinModal(boardId, userPinId)
-    .then(() => {
-      console.log('editpins complete');
-      // smash then singlebrd
-    }).catch((err) => console.error(err));
-};
-
+// import editPins from '../editPins/editPins';
 
 const createPin = (e) => {
   e.stopImmediatePropagation();
@@ -99,7 +87,7 @@ const printPin = (e, allBrdPins) => {
       `;
       utilities.printToDom('dynamicModalDiv', pinString);
       $(`#${item.id}_splt_${item.boardId}`).click(deletePin);
-      $(`#${item.id}_edit_${item.boardId}`).click(updatePin);
+      // $(`#${item.id}_edit_${item.boardId}`).click(updatePin);
     }
   });
 };
