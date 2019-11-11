@@ -17,13 +17,17 @@ Display on page load:
 ![on load](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest-logged-out.png)
 
 Logged in display (User's Boards):
-![logged in](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest-logged-in-view.png)
+![logged in](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest_logged_in.png)
 
 Individual Board View:
-![single board](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest-single-board.png)
+![single board](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest_single_board.png)
 
 Individual Pin View:
-![single pin](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest-pin-modal.png)
+![single pin](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest_pin_modal.png)
+
+Add/Edit Pin Form:
+![create or edit pin](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest_add-edit_form.png)
+
 
 
 ## Instructions for how to run the project

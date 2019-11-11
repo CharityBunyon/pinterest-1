@@ -4,12 +4,13 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import utilities from '../../helpers/utilities';
 import delIcon from '../../../assets/images/trash-icon.png';
+import editIcon from '../../../assets/images/edit-icon.png';
 import boardClick from '../boards/boardClick';
 import userPinData from '../../helpers/data/userPinData';
 import pins from '../../helpers/data/pinsData';
 import smash from '../../helpers/data/smash';
 import singleBoard from '../singleBoard/singleBoard';
-
+// import editPins from '../editPins/editPins';
 
 const createPin = (e) => {
   e.stopImmediatePropagation();
@@ -63,7 +64,8 @@ const printPin = (e, allBrdPins) => {
     if (item.id === pin) {
       const pinString = `
         <div class="modal-header">
-          <h3 class="modal-title col-10" id="pinModalLabel">${item.title}</h3>
+          <h3 class="modal-title col-9" id="pinModalLabel">${item.title}</h3>
+          <img id='${item.id}_edit_${item.boardId}' class='col-1 edit-pin' src='${editIcon}' />
           <img id='${item.id}_splt_${item.boardId}' class='col-1 pinTarget del-pin' src='${delIcon}' />
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -85,6 +87,7 @@ const printPin = (e, allBrdPins) => {
       `;
       utilities.printToDom('dynamicModalDiv', pinString);
       $(`#${item.id}_splt_${item.boardId}`).click(deletePin);
+      // $(`#${item.id}_edit_${item.boardId}`).click(updatePin);
     }
   });
 };
