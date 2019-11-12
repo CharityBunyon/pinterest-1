@@ -6,11 +6,6 @@ import singleBoard from '../singleBoard/singleBoard';
 import pinsData from '../../helpers/data/pinsData';
 import userPinsData from '../../helpers/data/userPinData';
 
-// on update submit create pin obj and userpin obj !!!
-// update pin/userPin objs to use input values !!!
-// run changePin passing in pin obj & id !!!
-// run changeUserPin passing in userpin obj & id !!!
-
 const editPinSubmit = (pinObj) => {
   const updatedPin = {
     title: $('#pin-title').val(),
@@ -26,7 +21,6 @@ const editPinSubmit = (pinObj) => {
     boardId: $('#boardDropdown').val(),
     hasTried: $('#hasTriedCheck').is(':checked'),
   };
-  console.log('update click', updatedUserPin, updatedPin);
   pinsData.changePin(pinObj.pinId, updatedPin).then(() => {
     userPinsData.changeUserPin(pinObj.id, updatedUserPin).then(() => {
       smash.createBoardPins(updatedUserPin.boardId).then((response) => {
@@ -41,15 +35,13 @@ const editPinSubmit = (pinObj) => {
         $('#pinModal').modal('hide');
       });
     });
-  }).catch((err) => console.log(err));
+  }).catch((err) => console.error(err));
 };
 
 const editPinModal = (boardId, userPinId) => new Promise((resolve, reject) => {
-  console.log('brdId', boardId);
   smash.createBoardPins(boardId).then((response) => {
     const brdPins = response;
     const pinToEdit = brdPins.find((x) => x.id === userPinId);
-    console.log('pin to edit', pinToEdit);
     $('#newPinModal').modal('show');
     $('#saveNewPin').addClass('hide');
     $('#savePinUpdate').removeClass('hide');
@@ -79,7 +71,6 @@ const updatePin = (e) => {
   const userPinId = e.target.id.split('_edit_')[0];
   editPinModal(boardId, userPinId)
     .then(() => {
-      console.log('editpins complete');
     }).catch((err) => console.error(err));
 };
 

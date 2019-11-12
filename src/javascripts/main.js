@@ -31,7 +31,6 @@ const init = () => {
   $(document).on('click', '.pinImg', (e) => {
     const brdId = e.target.id.split('-pin-')[1];
     smash.createBoardPins(brdId).then((response) => {
-      console.log('pin click id', brdId);
       singlePin.printPin(e, response);
     }).catch((err) => console.error(err));
   });

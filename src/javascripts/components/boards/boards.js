@@ -29,7 +29,6 @@ const printActiveUserBoards = () => {
 
 const createBoard = (e) => {
   e.stopImmediatePropagation();
-  console.log('clicked save board');
   const { uid } = firebase.auth().currentUser;
   const newBoard = {
     uid,
@@ -37,7 +36,6 @@ const createBoard = (e) => {
     isPrivate: $('#isPrivateCheck').is(':checked'),
   };
   boardData.addNewBoard(newBoard).then(() => {
-    console.log('added board');
     $('#newBoardModal').modal('hide');
     printActiveUserBoards();
     $('#addBoardForm').trigger('reset');
