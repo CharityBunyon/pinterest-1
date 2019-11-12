@@ -38,6 +38,9 @@ Add/Edit Pin Form:
 * At the root of this project, run the following command: `hs -p 8080`.
 * In your browser, navigate to `https://localhost:8080`;
 
+## Demo
+[Preview the app here!](https://squidterest.firebaseapp.com/)
+
 ## Contributors
 
 * [Ashley Claiborne](https://github.com/aclai4067)
