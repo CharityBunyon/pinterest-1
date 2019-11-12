@@ -6,6 +6,8 @@ import apiKey from '../apiKeys.json';
 const baseUrl = apiKey.firebaseConfig.databaseURL;
 const getCurrentUid = () => firebase.auth().currentUser.uid;
 
+const saveNewUser = (newUser) => axios.post(`${baseUrl}/users.json`, newUser);
+
 const getCurrentUser = () => new Promise((resolve, reject) => {
   const currentUid = getCurrentUid();
   axios.get(`${baseUrl}/users.json?orderBy="uid"&equalTo="${currentUid}"`)
@@ -20,4 +22,4 @@ const getCurrentUser = () => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export default { getCurrentUser };
+export default { getCurrentUser, saveNewUser };

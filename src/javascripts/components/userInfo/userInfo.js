@@ -1,6 +1,21 @@
 import './userInfo.scss';
+import $ from 'jquery';
+import firebase from 'firebase/auth';
 import currentUser from '../../helpers/data/userData';
 import utilities from '../../helpers/utilities';
+
+const createProfile = () => {
+  const getCurrentUid = () => firebase.auth().currentUser.uid;
+  const googleUid = getCurrentUid();
+  const newUser = {
+    name: $('#').val(),
+    location: $('#').val(),
+    joinDate: '',
+    profilePic: $('#').val(),
+    uid: googleUid,
+  };
+  currentUser.saveNewUser(newUser);
+};
 
 const printProfileInfo = () => {
   currentUser.getCurrentUser().then((user) => {
@@ -15,7 +30,11 @@ const printProfileInfo = () => {
       </div>
     `;
     utilities.printToDom('profile', profileString);
-  }).catch((err) => console.error(err));
+  }).catch((err) => {
+    $('#newUserModal').modal('show');
+    $('#saveNewUser').click(createProfile);
+    console.error(err);
+  });
 };
 
 export default { printProfileInfo };

@@ -9,7 +9,6 @@ const addNewPin = (newPin) => new Promise((resolve, reject) => {
   axios.post(`${baseUrl}/pins.json`, newPin)
     .then((response) => {
       const newPinId = response.data;
-      console.log('new pin id', newPinId.name);
       resolve(newPinId.name);
     }).catch((err) => reject(err));
 });
