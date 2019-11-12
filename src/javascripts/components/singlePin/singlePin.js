@@ -23,9 +23,7 @@ const createPin = (e) => {
     category: $('#categoryDropdown').val(),
   };
   const board = $('#boardDropdown').val();
-  console.log(newPin, $('#hasTriedCheck').is(':checked'));
   pins.addNewPin(newPin).then((newPinId) => {
-    console.log(newPinId);
     const newUserPin = {
       uid,
       pinId: newPinId,
@@ -59,7 +57,6 @@ const deletePin = (e) => {
 
 const printPin = (e, allBrdPins) => {
   const pin = e.target.id.split('-pin-')[0];
-  console.log('printPin', pin);
   allBrdPins.forEach((item) => {
     if (item.id === pin) {
       const pinString = `
