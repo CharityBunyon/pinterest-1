@@ -10,7 +10,7 @@ import userPinData from '../../helpers/data/userPinData';
 import pins from '../../helpers/data/pinsData';
 import smash from '../../helpers/data/smash';
 import singleBoard from '../singleBoard/singleBoard';
-// import editPins from '../editPins/editPins';
+import tried from '../../../assets/images/tried-icon.png';
 
 const createPin = (e) => {
   e.stopImmediatePropagation();
@@ -78,16 +78,22 @@ const printPin = (e, allBrdPins) => {
           <div>
             <p class='text-center description'>${item.description}</p>
             <a target='_blank' href='${item.siteUrl}'><p class='text-center'>Visit Website</p></a>
-            <div class='modal-footer text-left p-0'>
-              <p class='col-12 m-0'>Pinner Comment:</p>
-              <p class='col-12 ml-2 comment'>${item.comment}</p>
+            <div class='modal-footer row d-flex text-left p-0'>
+              <div class='col-9'>
+                <p class='m-0'>Pinner Comment:</p>
+                <p class='ml-2 comment'>${item.comment}</p>
+              </div>
+              <div class='col-2 mr-2 p-0' id='triedDiv'></div>
             </div>
           </div>
         </div>
       `;
       utilities.printToDom('dynamicModalDiv', pinString);
+      if (item.hasTried) {
+        const triedString = `<img class='card-img' alt='tried this' title='I've tried this!' src='${tried}' />`;
+        utilities.printToDom('triedDiv', triedString);
+      }
       $(`#${item.id}_splt_${item.boardId}`).click(deletePin);
-      // $(`#${item.id}_edit_${item.boardId}`).click(updatePin);
     }
   });
 };

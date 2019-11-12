@@ -22,7 +22,7 @@ Logged in display (User's Boards):
 Individual Board View:
 ![single board](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest_single_board.png)
 
-Individual Pin View:
+Individual Pin View:      
 ![single pin](https://raw.githubusercontent.com/aclai4067/pinterest/master/screenshots/squidterest_pin_modal.png)
 
 Add/Edit Pin Form:
